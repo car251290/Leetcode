@@ -7,7 +7,7 @@ mid = Math.floor((max + min)/2)
 
 while(l < max){
     let count = 0
-    for(let i=0; i<h.length; i++){
+    for(let i=1; i<h.length; i++){
         count += Math.ceil(h[i]/mid);
     }
     if(count>h.length){
@@ -21,6 +21,7 @@ while(l < max){
 }
 
 function minEatingSpeed(piles,h){
+    let piles = [[3,6,7,11], [30,11,23,4,20], [30,11,23,4,20]];
     piles.forEach((piles)=> {
         let l = 1;
         let max = Math.max(...piles);
@@ -35,7 +36,10 @@ function minEatingSpeed(piles,h){
             if(count>h){
                 l = mid+1;
                 console.log(' Koko need to continue eating in ' + mid + ' hours');    
-            } else {
+            }if(count < h){
+                l = mid -1;
+
+            }else {
                 console.log('KOko finished the piles in ' + mid + ' hours');
                 max= mid;
             }
